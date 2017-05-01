@@ -3,7 +3,6 @@ package system.client;
 import java.io.*;
 import java.net.Socket;
 
-import com.sun.deploy.resources.Deployment_pt_BR;
 import org.apache.log4j.Logger;
 
 /**
@@ -38,7 +37,7 @@ public class FileClient {
      */
     public boolean upload(String filepath) throws IOException {
         boolean flag = false;
-        dos.writeChars("upload");
+        dos.writeUTF("upload");
         dos.flush();
         logger.info("向服务器发送上传指令");
         File file = new File(filepath);
@@ -191,8 +190,7 @@ public class FileClient {
     public static void main(String[] args) {
         FileClient fc = new FileClient();
         try {
-            fc.upload("1.txt");
-
+            fc.upload("data/1.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }

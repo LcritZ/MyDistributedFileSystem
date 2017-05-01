@@ -39,6 +39,15 @@ public class MainMiddleServer {
             }
             switch (ins){
                 case "upload":
+                    try {
+                        FileUpload fu = new FileUpload(mms.dis,mms.dos);
+                        long size = mms.dis.readLong();
+                        mms.dos.writeChar('Y');
+                        String name = mms.dis.readUTF();
+                        fu.uploadFile(name,size);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
             }
         }
